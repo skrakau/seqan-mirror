@@ -910,7 +910,7 @@ def removeDuplicateTexts(tree):
     Suffixes starting with '\u0001' are ignored for the comparisons
     and strings with these suffixes are preferred.
     """
-    ##print 'remove duplicates'
+    print 'remove duplicates'
     def recurse(node):
         in_cleaned = {}
         cleaned = []
@@ -919,13 +919,15 @@ def removeDuplicateTexts(tree):
             pos = txt.find('\u0001')
             if pos != -1:
                 clean = txt[:pos]
-            ##print cleaned, repr(clean)
+            #print cleaned, repr(clean)
             if clean in in_cleaned:
                 if '\u0001' in clean and not '\u0001' in cleaned[in_cleaned[clean]]:
                     cleaned[in_cleaned[clean]] = txt
             else:
+                in_cleaned[clean] = len(cleaned)
                 cleaned.append(txt)
         node.texts = cleaned
+        #print 'result of cleaning', cleaned
         for child in node.children.itervalues():
             recurse(child)
     for child in tree.root.children.itervalues():
