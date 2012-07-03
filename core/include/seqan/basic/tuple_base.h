@@ -52,15 +52,35 @@ namespace seqan {
 /**
 .Class.Tuple:
 ..cat:Aggregates
-..concept:Concept.Aggregate
+..implements:Concept.Aggregate
 ..summary:A plain fixed-length string.
 ..signature:Tuple<T, SIZE[, TSpec]>
 ..param.T:The value type, that is the type of characters stored in the tuple.
 ..param.SIZE:The size/length of the tuple.
 ...remarks:In contrast to strings, the length of a tuple is fixed.
 ..param.TSpec:The specializing type.
-...default:$void$, no compression (faster access).
+...default:$void$, no compression (faster access)
+..example.text:
+Tuples are a bit harder to use than @Class.Pair|Pairs@ and @Class.Triple|Triples@.
+You have to use the Functions @Function.assignValueAt@ and @Function.getValue@ to access the contained values.
+..example.code:
+Tuple<int, 3> tuple;
+assignValueAt(tuple, 0, 10);
+assignValueAt(tuple, 1, 20);
+assignValueAt(tuple, 2, 30);
+std::cout << getValue(tuple, 0) << ", " << getValue(tuple, 1) << ", "
+          << getValue(tuple, 2) << '\n';
+// => print "10, 20, 30"
 ..include:seqan/basic.h
+
+.Memfunc.Tuple#Tuple:
+..class:Class.Tuple
+..summary:Constructor (copy, default).
+..description:
+The class Tuple provides the default and copy construtor.
+..signature:Tuple()    
+..signature:Tuple(tuple)
+..param.tuple:Other Tuple object (copy constructor).
 */
 
 template <typename T_, unsigned _size, typename TSpec = void>
@@ -129,7 +149,7 @@ const unsigned Tuple<T_, _size, TSpec>::SIZE = _size;
 // Metafunction LENGTH
 // -----------------------------------------------------------------------
 
-///.Metafunction.LENGTH.param.T.type:Class.Tuple
+///.DISABLED.Metafunction.LENGTH.param.T.type:Class.Tuple
 
 template <typename T_, unsigned _size, typename TSpec>
 struct LENGTH<Tuple<T_, _size, TSpec> >
@@ -141,7 +161,7 @@ struct LENGTH<Tuple<T_, _size, TSpec> >
 // Metafunction Value
 // -----------------------------------------------------------------------
 
-///.Metafunction.Value.param.T.type:Class.Tuple
+///.DISABLED.Metafunction.Value.param.T.type:Class.Tuple
 
 template <typename T_, unsigned _size, typename TSpec>
 struct Value<Tuple<T_, _size, TSpec> >
@@ -153,7 +173,7 @@ struct Value<Tuple<T_, _size, TSpec> >
 // Metafunction Spec
 // -----------------------------------------------------------------------
 
-///.Metafunction.Spec.param.T.type:Class.Tuple
+///.DISABLED.Metafunction.Spec.param.T.type:Class.Tuple
 
 template <typename T_, unsigned _size, typename TSpec>
 struct Spec<Tuple<T_, _size, TSpec> >
@@ -248,6 +268,18 @@ move(Tuple<T_, _size, void> & t1, Tuple<T_, _size, void> & t2)
 // -----------------------------------------------------------------------
 // Function assignValueAt()
 // -----------------------------------------------------------------------
+
+/**
+.Function.assignValueAt
+..cat:Aggregates
+..summary:Assign an entry of an aggregate.
+..signature:assignValueAt(obj, idx, val)
+..param.obj:The aggregate to set an entry of.
+...type:Concept.Aggregate
+..param.idx:The index of the value in the tuple to set.
+..param.val:The value to assign into $tuple[idx]$.
+..include:seqan/basic.h
+ */
 
 // TODO(holtgrew): Remove in favour of assignValue()! Remove function definition here, AT LEAST
 

@@ -47,20 +47,115 @@ namespace seqan {
 // Tags, Classes, Enums
 // ============================================================================
 
+// ----------------------------------------------------------------------------
+// Concept Aggregate
+// ----------------------------------------------------------------------------
+
+// Define the concept aggregate and the concept's functions and metafunctions.
+
 /**
 .Concept.Aggregate
 ..summary:Aggregate types contain a fixed number of fixed-size values.
 ..remarks:Stream output operators are not shown in the function list below, but required.
 ..remarks:Comparison operators are not shown in the function list below, but required.
 
-..Function.clear.concept:Concept.Aggregate
-..Function.value.concept:Concept.Aggregate
-..Function.assignValue.concept:Concept.Aggregate
+.Function.Aggregate#clear
+..concept:Concept.Aggregate
+..summary:Clear an aggregate.
+..signature:clear(obj)
+..param.obj:The aggregate to clear.
+..include:seqan/basic.h
 
-..Metafunction.LENGTH.concept:Concept.Aggregate
-..Metafunction.Value.concept:Concept.Aggregate
- */
+.Function.Aggregate#getValue
+..concept:Concept.Aggregate
+..summary:Get entry of aggregate by index.
+..signature:GetValue getValue(obj, i)
+..param.obj:Aggregate to get entry of.
+..param.i:Index of entry to assign.
+..include:seqan/basic.h
 
+.Function.Aggregate#assignValue
+..concept:Concept.Aggregate
+..summary:Get entry of aggregate by index.
+..signature:Value assignValue(obj, i, val)
+..param.obj:Aggregate to assign entry of.
+..param.i:Index of entry to assign.
+..param.val:Value to assign into $i$-th entry of $obj$.
+...type:Metafunction.Value
+..include:seqan/basic.h
+
+.Function.Aggregate#length
+..concept:Concept.Aggregate
+..summary:Return length of aggregate.
+..description:Since the length of an aggregate is fixed at compile-time, this is equivalent to using @Metafunction.Aggregate#LENGTH@ on the aggregate type.
+..signature:length(obj)
+..param.obj:The aggregate to get the length of.
+..include:seqan/basic.h
+
+.Metafunction.Aggregate#GetValue
+..concept:Concept.Aggregate
+..summary:Get type for fast reading of an aggregate's values.
+..signature:GetValue<TAggregate[, INDEX]>::Type
+..param.TAggregate:The Aggregate type to query.
+..param.INDEX:The index of the aggregate to retrieve the type for.
+...default:$0$
+...type:nolink:$unsigned$
+..remarks:
+The argument $INDEX$ is 1-based and optional, the default value is $0$.
+For tuples, giving an $INDEX$ does not make sense and the type of the contained elements is used.
+..returns:Returns the type for fast reading of an aggregate's value at position $INDEX$.
+..see:Metafunction.Aggregate#Value
+..include:seqan/basic.h
+
+.Metafunction.Aggregate#LENGTH
+..concept:Concept.Aggregate
+..summary:Return the number of entries in the aggregate.
+..signature:LENGTH<TAggregate>::VALUE
+..param.TAggregate:The Aggregate type to query.
+..returns:Returns the number of entries in the aggregate.
+..include:seqan/basic.h
+
+.Metafunction.Aggregate#Position
+..concept:Concept.Aggregate
+..summary:Returns the position type for the aggregate.
+..signature:Position<TAggregate>::Type
+..param.TAggregate:The Aggregate type to query.
+..returns:Returns the type that is sufficient for storing positions in the aggregate.
+..include:seqan/basic.h
+
+.Metafunction.Aggregate#Size
+..concept:Concept.Aggregate
+..summary:Returns the size type for the aggregate.
+..signature:Size<TAggregate>::Type
+..param.TAggregate:The Aggregate type to query.
+..returns:Returns the type that is sufficient for storing lengths of the aggregate.
+..include:seqan/basic.h
+
+.Metafunction.Aggregate#Spec
+..concept:Concept.Aggregate
+..summary:Return the specialization of the aggregate type.
+..signature:Spec<TAggregate>::Type
+..param.TAggregate:The Aggregate type to query.
+..returns:Returns the specialization of the aggregate type.
+..include:seqan/basic.h
+
+.Metafunction.Aggregate#Value
+..concept:Concept.Aggregate
+..summary:Return the type of the aggregate elements.
+..signature:Spec<TAggregate[, INDEX]>::Type
+..param.TAggregate:The Aggregate type to query.
+..param.INDEX:The index of the aggregate to retrieve the type for.
+...default:$0$
+...type:nolink:$unsigned$
+..remarks:
+The argument $INDEX$ is 1-based and optional, the default value is $0$.
+For tuples, giving an $INDEX$ does not make sense and the type of the contained elements is used.
+..returns:Returns the type of the element stored in $TAggregate$ aggregates at position $INDEX$.
+..see:Metafunction.Aggregate#GetValue
+..include:seqan/basic.h
+*/
+
+// TOOD(holtgrew): Necessary?
 /**
 .Tag.Compressed
 ..cat:Aggregates
@@ -72,6 +167,7 @@ namespace seqan {
 struct Compressed_;
 typedef Tag<Compressed_> Compressed;
 
+// TOOD(holtgrew): Necessary?
 /**
 .Tag.BitCompressed
 ..cat:Aggregates

@@ -26,8 +26,8 @@
 <div class="content boxed">
 
 $!text_section(path=[cat, subcat, 'summary'], hide_title=True)!$
-$!text_section(path=[cat, subcat, 'description'], hide_title=True)!$
 $!signature_section(key='signature')!$
+$!text_section(path=[cat, subcat, 'description'], hide_title=True)!$
 $!hierarchy_section(path=[cat, subcat])!$
 
 <!--(if tree.find(path=[cat, subcat, 'conceptfunc']) or tree.find(path=[cat, subcat, 'conceptmetafunc']))-->
@@ -73,6 +73,7 @@ $!link_sigs_section(key='type')!$
 $!link_sigs_section(key='typedef')!$
 $!link_sigs_section(key='memvar')!$
 $!link_sigs_section(key='memfunc')!$
+$!link_sigs_section(key='classfunc')!$
 $!link_sigs_section(key='function')!$
 $!param_section(key='value')!$
 $!link_sigs_section(key='shortcut')!$
@@ -98,7 +99,7 @@ $!itemize_section(path=[cat, subcat, 'cite'])!$
 
 $!wiki_link_section(path=[cat, subcat, 'wiki'])!$
 
-#!<div style="font-size:80%; text-align:right;"><a href="#" onclick="javascript: $('#debug_info').toggle(); return false;">toggle debug</a></div><pre id="debug_info" style="display:none;">@!tree.find([cat, subcat])!@</pre>#! remove comment for debugging
+<div style="font-size:80%; text-align:right;"><a href="#" onclick="javascript: $('#debug_info').toggle(); return false;">toggle debug</a></div><pre id="debug_info" style="display:none;">@!tree.find([cat, subcat])!@</pre>#! remove comment for debugging
 
 </div>
 

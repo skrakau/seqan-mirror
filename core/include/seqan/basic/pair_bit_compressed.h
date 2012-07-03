@@ -63,9 +63,6 @@ namespace seqan {
 ..remarks:Memory access could be slower. Direct access to members by pointers is not allowed.
 ..remarks:Functions $value()$ is not implemented yet since there it would require using a proxy. Use $getValue()$, $assignValue()$, $moveValue()$, $setValue()$ instead.
 ..include:seqan/basic.h
-.Memfunc.Pair#Pair.class:Spec.Bit Compressed Pair
-.Memvar.Pair#i1.class:Spec.Bit Compressed Pair
-.Memvar.Pair#i2.class:Spec.Bit Compressed Pair
 */
 
 template <typename T1_, typename T2_, unsigned BITSIZE1, unsigned BITSIZE2>

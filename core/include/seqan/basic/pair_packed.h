@@ -34,7 +34,7 @@
 // Packed Pair specialization.
 // ==========================================================================
 
-// Should this be called Packed and the tag be Packed?
+// TODO(holtgrew): Should this be called Packed and the tag be Packed?
 
 #ifndef SEQAN_CORE_INCLUDE_SEQAN_BASIC_PAIR_PACKED_H_
 #define SEQAN_CORE_INCLUDE_SEQAN_BASIC_PAIR_PACKED_H_
@@ -58,16 +58,22 @@ namespace seqan {
 ..cat:Aggregates
 ..general:Class.Pair
 ..summary:Stores two arbitrary objects. Saves memory by disabling memory alignment.
+..description:
+The Packed Pair specialization allows for the portably disabling of @http://en.wikipedia.org/wiki/Data_structure_alignment|memory alignment@ for pairs.
+Note that this might have performance impacts and limits the ways that such pairs can be used.
 ..signature:Pair<T1, T2, Compressed>
 ..param.T1:The type of the first object.
 ..param.T2:The type of the second object.
 ..notes:Useful for external storage.
 ..remarks:Memory access could be slower. Direct access to members by pointers is not allowed on all platforms.
 ..remarks:Functions $value()$ is not implemented yet since there it would require using a proxy. Use $getValue()$, $assignValue()$, $moveValue()$, $setValue()$ instead.
+..example.text:
+Packed Pair objects can be used just like normal @Class.Pair@ objects.
+..example.code:
+Pair<__uint16, __uint16> pair(10, 20);
+std::cout << pair.i1 << ", " << pair.i2 << '\n';
+// => print "10, 20"
 ..include:seqan/basic.h
-.Memfunc.Pair#Pair.class:Spec.Packed Pair
-.Memvar.Pair#i1.class:Spec.Packed Pair
-.Memvar.Pair#i2.class:Spec.Packed Pair
 */
 
 #ifdef PLATFORM_WINDOWS

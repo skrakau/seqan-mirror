@@ -9,6 +9,7 @@
 ..Function:Function
 ..Memvar:Data Member
 ..Memfunc:Member Function
+..Memfunc:Class Functions
 ..Typedef:Typedef
 ..Metafunction:Metafunction
 ..Tag:Tag
@@ -41,6 +42,7 @@
 ..tag:Tags
 ..memvar:Data Members
 ..memfunc:Member Functions
+..classfunc:Class Functions
 ..typedef:Typedefs
 ..function:Functions
 ..remarks:Remarks
@@ -100,6 +102,7 @@
 ..function:Function.*.param.*.type
 ..function:Function.*.returns.*.type
 ..function:Function.*.returns.type
+..classfunc:Function.*.class
 ..type:Metafunction.*.param.*.type
 ..derived:Class.*.base
 ..derived:Spec.*.base
@@ -126,10 +129,11 @@
 ..type:baseconcept.conceptusedbymeta
 ..memvar:implements
 ..memvar:base
+..memvar:general
 ..typedef:base
 ..memfunc:general
 ..function:conceptfunc
-..function:implements
+..function:implements.conceptfunc
 ..function:general
 ..function:baseconcept.conceptusedbyfunc
 ..function:shortcutfor

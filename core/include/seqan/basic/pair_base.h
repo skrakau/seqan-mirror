@@ -50,32 +50,57 @@ namespace seqan {
 // ============================================================================
 
 /**
-.Class.Pair:
+.Class.Pair
 ..cat:Aggregates
-..concept:Concept.Aggregate
+..implements:Concept.Aggregate
 ..summary:Stores two arbitrary objects.
+..description:
+The Pair class allows to treat two values as one.
+It is similar to the $std::pair<>$ class template but allows the specialization for bit-compression.
+You can access the two members as $pair.i1$ and $pair.i2$.
 ..signature:Pair<T1[, T2[, TSpec]]>
 ..param.T1:The type of the first object.
 ..param.T2:The type of the second object.
 ...default:$T1$
 ..param.TSpec:The specializing type.
 ...default:$void$, no compression (faster access).
+..example.text:
+Pairs are aggregate values of two types.
+For example, the following defines a pair of $int$s and a pair of $int$ and $unsigned.
+..example.code:
+Pair<int> pair1;  // Equivalent to Pair<int, int> pair1;
+Pair<int, unsigned> pair2;
+..example.text:
+Access to the contained (aggregated) values is done using the data members $i1$ and $i2$.
+..example.code:
+pair1.i1 = 10;
+pair2.i2 = 20;
+std::cout << pair1.i1 << ", " << pair1.i2 << '\n';
+// => print "10, 20"
+..see:Class.Triple
+..see:Class.Tuple
+..include:seqan/basic.h
+
 .Memfunc.Pair#Pair:
 ..class:Class.Pair
 ..summary:Constructor
-..signature:Pair<T1, T2[, TSpec]> ()    
-..signature:Pair<T1, T2[, TSpec]> (pair)
-..signature:Pair<T1, T2[, TSpec]> (i1, i2)
+..description:
+The class Pair provides the default and copy constructor.
+Additionally, you can construct Pair objects with the values you want to store in the pair.
+..signature:Pair()    
+..signature:Pair(pair)
+..signature:Pair(i1, i2)
 ..param.pair:Other Pair object. (copy constructor)
 ..param.i1:T1 object.
 ..param.i2:T2 object.
+
 .Memvar.Pair#i1:
 ..class:Class.Pair
-..summary:T1 object
+..summary:First object; of type $T1$.
+
 .Memvar.Pair#i2:
 ..class:Class.Pair
-..summary:T2 object
-..include:seqan/basic.h
+..summary:Second object; of type $T2$
 */
 
 // TODO(holtgrew): Should default specs be specialized with void or Default?
@@ -122,8 +147,6 @@ struct Pair
 // Metafunction LENGTH
 // -----------------------------------------------------------------------
 
-///.Metafunction.LENGTH.param.T.type:Class.Triple
-
 template <typename T1, typename T2, typename TSpec>
 struct LENGTH<Pair<T1, T2, TSpec> >
 {
@@ -136,7 +159,7 @@ struct LENGTH<Pair<T1, T2, TSpec> >
 // Metafunction Value
 // ----------------------------------------------------------------------------
 
-/**
+/*DISABLED*
 .Metafunction.Value
 ..signature:Value<TTuple, POSITION>::Type
 ..param.TTuple:@Class.Pair@, @Class.Triple@, or @Class.Tuple@ to return value from.
@@ -163,8 +186,6 @@ struct Value<Pair<T1, T2, TSpec>, 2>
 // Metafunction Spec
 // ----------------------------------------------------------------------------
 
-///.Metafunction.Spec.param.T.type:Class.Pair
-
 template <typename T1, typename T2, typename TSpec>
 struct Spec<Pair<T1, T2, TSpec> >
 {
@@ -174,6 +195,20 @@ struct Spec<Pair<T1, T2, TSpec> >
 // ============================================================================
 // Functions
 // ============================================================================
+
+// ----------------------------------------------------------------------------
+// Function clear().
+// ----------------------------------------------------------------------------
+
+///.DISABLED.Function.Aggregate#clear.param.obj.type:Class.Pair
+
+template <typename T1_, typename T2_, typename TSpec>
+inline void
+clear(Pair<T1_, T2_, TSpec> & p1)
+{
+    set(p1.i1, T1_());
+    set(p1.i2, T2_());
+}
 
 // ----------------------------------------------------------------------------
 // Function set().
@@ -216,6 +251,17 @@ std::ostream & operator<<(std::ostream & out, Pair<T1_, T2_, TSpec> const & p)
 // Function getValueIX()
 // -----------------------------------------------------------------------
 
+/**
+.Function.Pair#getValueI1
+..cat:Aggregates
+..class:Class.Pair
+..summary:Get first value of a pair.
+..signature:getValueI1(pair)
+..param.pair:The pair object to query.
+..returns:The first value of the given pair.
+..include:seqan/basic.h
+ */
+
 // There can be no getValue with index since T1 can be != T2.
 
 template <typename T1, typename T2, typename TSpec>
@@ -223,6 +269,17 @@ inline T1 getValueI1(Pair<T1, T2, TSpec> const & pair)
 {
     return pair.i1;
 }
+
+/**
+.Function.Pair#getValueI2
+..cat:Aggregates
+..class:Class.Pair
+..summary:Get second value of a pair.
+..signature:getValueI2(pair)
+..param.pair:The pair object to query.
+..returns:The second value of the given pair.
+..include:seqan/basic.h
+ */
 
 template <typename T1, typename T2, typename TSpec>
 inline T2 getValueI2(Pair<T1, T2, TSpec> const & pair)

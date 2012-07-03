@@ -52,8 +52,10 @@ namespace seqan {
 /**
 .Class.Triple:
 ..cat:Aggregates
-..concept:Concept.Aggregate
+..implements:Concept.Aggregate
 ..summary:Stores three arbitrary objects.
+..description:
+The Triple class allows to treat three values as one (cmp. @Class.Pair@).
 ..signature:Triple<T1[, T2[, T3[, TSpec]]]>
 ..param.T1:The type of the first object.
 ..param.T2:The type of the second object.
@@ -62,26 +64,49 @@ namespace seqan {
 ...default:$T2$
 ..param.TSpec:The specializing type.
 ...default:$void$, no compression (faster access).
+..example.text:
+Triples are aggregate values of three types.
+For example, the following defines a triple of three $int$s and a triple of two $int$s and one $unsigned.
+..example.code:
+Triple<int> triple1;  // Equivalent to Triple<int, int, int> triple1;
+Triple<int, unsigned, int> triple2;
+..example.text:
+Access to the contained (aggregated) values is done using the data members $i1$, $i2$, and $i3$.
+..example.code:
+triple1.i1 = 10;
+triple1.i2 = 20;
+triple1.i3 = triple.i2;
+std::cout << triple1.i1 << ", " << triple2.i1 << ", " << triple1.i3 << '\n';
+// => print "10, 20, 20"
+..see:Class.Pair
+..see:Class.Tuple
+..include:seqan/basic.h
+
 .Memfunc.Triple#Triple:
 ..class:Class.Triple
-..summary:Constructor
-..signature:Triple<T1, T2, T3[, TSpec]> ()
-..signature:Triple<T1, T2, T3[, TSpec]> (triple)
-..signature:Triple<T1, T2, T3[, TSpec]> (i1, i2, i3)
+..summary:Constructor.
+..description:
+The class Triple provides the default and copy constructor.
+Additionally, you can construct Triple objects with the values you want to store in the triple.
+..signature:Triple()
+..signature:Triple(triple)
+..signature:Triple(i1, i2, i3)
 ..param.triple:Other Triple object. (copy constructor)
 ..param.i1:T1 object.
 ..param.i2:T2 object.
 ..param.i3:T3 object.
+
 .Memvar.Triple#i1:
 ..class:Class.Triple
 ..summary:T1 object
+
 .Memvar.Triple#i2:
 ..class:Class.Triple
 ..summary:T2 object
+
 .Memvar.Triple#i3:
 ..class:Class.Triple
 ..summary:T3 object
-..include:seqan/basic.h
 */
 
 template <typename T1_, typename T2_ = T1_, typename T3_ = T1_, typename TSpec = void>
@@ -143,8 +168,6 @@ struct Triple
 // Metafunction LENGTH
 // -----------------------------------------------------------------------
 
-///.Metafunction.LENGTH.param.T.type:Class.Triple
-
 template <typename T1, typename T2, typename T3, typename TSpec>
 struct LENGTH<Triple<T1, T2, T3, TSpec> >
 {
@@ -156,8 +179,6 @@ struct LENGTH<Triple<T1, T2, T3, TSpec> >
 // -----------------------------------------------------------------------
 // Metafunction Value
 // -----------------------------------------------------------------------
-
-///.Metafunction.Value.param.T.type:Class.Triple
 
 template <typename T1, typename T2, typename T3, typename TSpec>
 struct Value<Triple<T1, T2, T3, TSpec>, 1>
@@ -180,8 +201,6 @@ struct Value<Triple<T1, T2, T3, TSpec>, 3 >
 // -----------------------------------------------------------------------
 // Metafunction Spec
 // -----------------------------------------------------------------------
-
-///.Metafunction.Spec.param.T.type:Class.Triple
 
 template <typename T1, typename T2, typename T3, typename TSpec>
 struct Spec<Triple<T1, T2, T3, TSpec> >

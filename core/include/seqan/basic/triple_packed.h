@@ -37,6 +37,8 @@
 #ifndef SEQAN_CORE_INCLUDE_SEQAN_TRIPLE_PACKED_H_
 #define SEQAN_CORE_INCLUDE_SEQAN_TRIPLE_PACKED_H_
 
+// TODO(holtgrew): Should this be called Packed and the tag be Packed?
+
 namespace seqan {
 
 // ============================================================================
@@ -52,6 +54,9 @@ namespace seqan {
 ..cat:Aggregates
 ..general:Class.Triple
 ..summary:Stores three arbitrary objects. Saves memory by disabling memory alignment.
+..description:
+The Packed Triple specialization allows for the portably disabling of @http://en.wikipedia.org/wiki/Data_structure_alignment|memory alignment@ for triples.
+Note that this might have performance impacts and limits the ways that such pairs can be used.
 ..signature:Triple<T1, T2, T3, Compressed>
 ..param.T1:The type of the first object.
 ..param.T2:The type of the second object.
@@ -59,10 +64,6 @@ namespace seqan {
 ..notes:Useful for external storage.
 ..remarks:Memory access could be slower. Direct access to members by pointers is not allowed on all platforms.
 ..include:seqan/basic.h
-.Memfunc.Triple#Triple.class:Spec.Packed Triple
-.Memvar.Triple#i1.class:Spec.Packed Triple
-.Memvar.Triple#i2.class:Spec.Packed Triple
-.Memvar.Triple#i3.class:Spec.Packed Triple
 */
 
 #ifdef PLATFORM_WINDOWS
