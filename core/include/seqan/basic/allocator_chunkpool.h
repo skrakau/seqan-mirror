@@ -52,7 +52,7 @@ namespace seqan {
 
 /**
 .Spec.Chunk Pool Allocator:
-..cat:Allocators
+..cat:Memory
 ..general:Class.Allocator
 ..summary:Allocator that pools one or more consecutive memory blocks of a specific size.
 ..signature:Allocator< ChunkPool<SIZE, MAX_COUNT, ParentAllocator> >

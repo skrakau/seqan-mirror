@@ -53,8 +53,8 @@ namespace seqan {
 // ----------------------------------------------------------------------------
 
 /**
-.Class.SimpleType:
-..cat:Basic
+.Class.SimpleType
+..cat:Alphabets
 ..summary:Implementation for "simple" types.
 ..signature:SimpleType<TValue, TSpec>
 ..param.TValue:Type that stores the values of an instance.

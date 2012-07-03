@@ -56,7 +56,7 @@ namespace seqan {
 /**
 .Class.VolatilePtr
 ..summary:Helper data structure for handling volatile data.
-..cat:Basic
+..cat:Memory
 ..signature:VolatilePtr<T>
 ..param.T:The pointed-to type.
 ..remarks:Allows you to handle volatile data (used by ext. string during swapping).

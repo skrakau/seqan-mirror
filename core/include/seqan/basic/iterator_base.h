@@ -50,8 +50,8 @@ namespace seqan {
 // ============================================================================
 
 /**
-.Class.Iter:
-..cat:Basic
+.Class.Iter
+..cat:Iterators
 ..summary:Iterator that is used to traverse containers.
 ..signature:Iter<TContainer, TSpec>
 ..param.TContainer:Type of the container that can be iterated by $Iter$.

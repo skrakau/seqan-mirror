@@ -51,10 +51,10 @@ namespace seqan {
 
 /**
 .Spec.Simple Allocator:
-..cat:Allocators
+..cat:Memory
 ..general:Class.Allocator
 ..summary:General purpose allocator.
-..signature:Allocator< SimpleAlloc<ParentAllocator> >
+..signature:Allocator<SimpleAlloc<ParentAllocator> >
 ..param.ParentAllocator:An allocator that is by the simple allocator used to allocate memory.
 ...default:@Tag.Default@
 ...remarks:@Tag.Default@ used as allocator means that the default implementations
@@ -141,13 +141,13 @@ parentAllocator(Allocator<SimpleAlloc<TParentAllocator> > & me)
 /**
 .Function.Allocator#clear:
 ..cat:Memory
+..class:Class.Allocator
 ..summary:Deallocates all memory blocks.
 ..signature:clear(allocator)
 ..param.allocator:Allocator object.
 ...type:Class.Allocator
-...concept:Concept.Allocator
-..remarks:This function deallocates all memory blocks 
-that was allocated using @Function.allocate@ for $allocator$.
+..remarks:
+This function deallocates all memory blocks that was allocated using @Function.Allocator#allocate@ for $allocator$.
 The memory is not pooled but directly passed back to the heap manager.
 ..see:Function.allocate
 ..see:Function.deallocate

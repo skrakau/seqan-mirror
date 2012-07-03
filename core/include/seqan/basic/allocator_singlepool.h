@@ -52,7 +52,7 @@ namespace seqan {
 
 /**
 .Spec.Single Pool Allocator:
-..cat:Allocators
+..cat:Memory
 ..general:Class.Allocator
 ..summary:Allocator that pools memory blocks of specific size.
 ..signature:Allocator< SinglePool<SIZE, ParentAllocator> >

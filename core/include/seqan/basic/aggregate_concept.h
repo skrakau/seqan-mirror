@@ -60,6 +60,7 @@ namespace seqan {
 ..remarks:Comparison operators are not shown in the function list below, but required.
 
 .Function.Aggregate#clear
+..cat:Aggregates
 ..concept:Concept.Aggregate
 ..summary:Clear an aggregate.
 ..signature:clear(obj)
@@ -67,6 +68,7 @@ namespace seqan {
 ..include:seqan/basic.h
 
 .Function.Aggregate#getValue
+..cat:Aggregates
 ..concept:Concept.Aggregate
 ..summary:Get entry of aggregate by index.
 ..signature:GetValue getValue(obj, i)
@@ -75,6 +77,7 @@ namespace seqan {
 ..include:seqan/basic.h
 
 .Function.Aggregate#assignValue
+..cat:Aggregates
 ..concept:Concept.Aggregate
 ..summary:Get entry of aggregate by index.
 ..signature:Value assignValue(obj, i, val)
@@ -85,6 +88,7 @@ namespace seqan {
 ..include:seqan/basic.h
 
 .Function.Aggregate#length
+..cat:Aggregates
 ..concept:Concept.Aggregate
 ..summary:Return length of aggregate.
 ..description:Since the length of an aggregate is fixed at compile-time, this is equivalent to using @Metafunction.Aggregate#LENGTH@ on the aggregate type.
@@ -93,6 +97,7 @@ namespace seqan {
 ..include:seqan/basic.h
 
 .Metafunction.Aggregate#GetValue
+..cat:Aggregates
 ..concept:Concept.Aggregate
 ..summary:Get type for fast reading of an aggregate's values.
 ..signature:GetValue<TAggregate[, INDEX]>::Type
@@ -108,6 +113,7 @@ For tuples, giving an $INDEX$ does not make sense and the type of the contained 
 ..include:seqan/basic.h
 
 .Metafunction.Aggregate#LENGTH
+..cat:Aggregates
 ..concept:Concept.Aggregate
 ..summary:Return the number of entries in the aggregate.
 ..signature:LENGTH<TAggregate>::VALUE
@@ -116,6 +122,7 @@ For tuples, giving an $INDEX$ does not make sense and the type of the contained 
 ..include:seqan/basic.h
 
 .Metafunction.Aggregate#Position
+..cat:Aggregates
 ..concept:Concept.Aggregate
 ..summary:Returns the position type for the aggregate.
 ..signature:Position<TAggregate>::Type
@@ -124,6 +131,7 @@ For tuples, giving an $INDEX$ does not make sense and the type of the contained 
 ..include:seqan/basic.h
 
 .Metafunction.Aggregate#Size
+..cat:Aggregates
 ..concept:Concept.Aggregate
 ..summary:Returns the size type for the aggregate.
 ..signature:Size<TAggregate>::Type
@@ -132,6 +140,7 @@ For tuples, giving an $INDEX$ does not make sense and the type of the contained 
 ..include:seqan/basic.h
 
 .Metafunction.Aggregate#Spec
+..cat:Aggregates
 ..concept:Concept.Aggregate
 ..summary:Return the specialization of the aggregate type.
 ..signature:Spec<TAggregate>::Type
@@ -140,6 +149,7 @@ For tuples, giving an $INDEX$ does not make sense and the type of the contained 
 ..include:seqan/basic.h
 
 .Metafunction.Aggregate#Value
+..cat:Aggregates
 ..concept:Concept.Aggregate
 ..summary:Return the type of the aggregate elements.
 ..signature:Spec<TAggregate[, INDEX]>::Type

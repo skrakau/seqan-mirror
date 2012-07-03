@@ -213,7 +213,7 @@ struct TagList
 
 /**
 .Class.TagSelector:
-..cat:Basic
+..cat:Metaprogramming
 ..summary:A structure to select a tag from a @Tag.TagList@.
 ..signature:TagSelector<TTagList>
 ..param.TTagList:A tag list.

@@ -51,19 +51,61 @@ namespace seqan {
 
 /**
 .Class.ProfileChar
+..implements:Concept.Assignable
+..implements:Concept.CopyConstructible
+..implements:Concept.DefaultConstructible
+..implements:Concept.Destructible
+..implements:Concept.EqualityComparable
 ..summary:Alphabet type for profiles over another alphabet.
+..description:
+Using $ProfileChar$ values are used for storing counts for each value of a given alphabet.
+Obviously, this is useful for storing profiles, e.g. for alignments, but also for storing columns of PSSMs (Position Specific Scoring Matrices).
 ..cat:Alphabets
-..signature:ProfileChar<TValue, TCount>
+..signature:
+template <typename TValue,
+          typename TCount = unsigned,
+          typename TSpec = void>
+class ProfileChar<TValue>;
 ..param.TValue:The underlying alphabet type.
 ..param.TCount:The type to use for counting.
 ...default:nolink:$unsigned int$
 ..param.TSpec:Specialization tag.
 ...default:nolink:$void$
+..example.text:The simplest use of a ProfileChar value.
+..example.code:
+ProfileChar<Dna> p;
+p.count[0] = 10;
+p.count[1] = 20;
+p.count[2] = 30;
+p.count[3] = 40;
+std::cout << p.count[0] << ", " << p.count[1] << ", " << p.count[2]
+          << ", " << p.count[3] << '\n';
+// => print "10, 20, 30, 40"
+..example.text:Copy constructor from Dna value.
+..example.code:
+Dna c = 'A';
+ProfileChar<Dna> p2(c);
+std::cout << p.count[0] << ", " << p.count[1] << ", " << p.count[2]
+          << ", " << p.count[3] << '\n';
+// => print "1, 0, 0, 0"
 ..include:seqan/basic.h
 
 .Memvar.ProfileChar#count[]
 ..class:Class.ProfileChar
 ..summary:Array of @Metafunction.ValueSize@ elements, giving counts in profile.
+
+.Memfunc.ProfileChar#ProfileChar
+..class:Class.ProfileChar
+..summary:Constructor.
+..description:The class ProfileChar provides the default constructor, copy constructor and conversion constructor from arbitrary alphabets.
+..signature:
+ProfileChar()
+ProfileChar(other)
+ProfileChar(c)
+..param.other:Another @Class.ProfileChar@ object to copy from.
+...type:Class.ProfileChar
+..param.c:An arbitrary @Concept.Alphabet@ value.
+...type:Concept.Alphabet
  */
 
 template <typename TValue, typename TCount = unsigned, typename TSpec = void>

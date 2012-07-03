@@ -48,8 +48,8 @@ namespace seqan {
 // ============================================================================
 
 /**
-.Class.Proxy:
-..cat:Basic
+.Class.Proxy
+..cat:Proxies
 ..summary:Emulates object of another class.
 ..signature:Proxy<TSpec>
 ..param.TSpec:The specializing type.

@@ -51,7 +51,7 @@ namespace seqan {
 
 /**
 .Spec.Multi Pool Allocator:
-..cat:Allocators
+..cat:Memory
 ..general:Class.Allocator
 ..summary:Allocator that pools memory blocks.
 ..signature:Allocator MultiPool<ParentAllocator, BLOCKING_LIMIT> >

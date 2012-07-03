@@ -55,14 +55,14 @@ template <typename TValue, typename TSpec> struct Holder;
 // ============================================================================
 
 /**
-.Tag.Allocator Usage:
+.Tag.Allocator Usage
 ..cat:Memory
 ..summary:The purpose of an allocated memory block.
 ..tag.TagAllocateUnspecified:Not specified.
 ..tag.TagAllocateTemp:Temporary memory. 
 ..tag.TagAllocateStorage:Memory for storing container content. 
-..see:Function.allocate
-..see:Function.deallocate
+..see:Function.Allocator#allocate
+..see:Function.Allocator#deallocate
 ..include:seqan/basic.h
 */
 
@@ -78,20 +78,19 @@ struct AllocateStorage_;
 typedef Tag<AllocateStorage_> TagAllocateStorage;
 
 /**
-.Class.Allocator:
-..cat:Basic
+.Class.Allocator
+..cat:Memory
 ..summary:Manager for allocated memory.
 ..signature:Allocator<TSpec>
 ..param.TSpec:The specializing type.
 ...metafunction:Metafunction.Spec
-..implements:Concept.Allocator
-..include:basic.h
+..include:seqan/basic.h
 ..remarks:There are two reasons for using non-trivial allocators:
 ...text:1. Allocators support the function @Function.Allocator#clear@ for a fast deallocation of all 
 allocated memory blocks. 
 ...text:2. Some allocators are faster in allocating an deallocating memory.
 Pool allocators like e.g. @Spec.Single Pool Allocator@ or @Spec.Multi Pool Allocator@
-speed up @Function.allocate@, @Function.deallocate@, and @Function.Allocator#clear@ for
+speed up @Function.Allocator#allocate@, @Function.Allocator#deallocate@, and @Function.Allocator#clear@ for
 pooled memory blocks.
 ..include:seqan/basic.h
 */
@@ -99,14 +98,11 @@ pooled memory blocks.
 template <typename TSpec>
 struct Allocator;
 
-///.Function.allocate.param.object.type:Class.Allocator
-///.Function.deallocate.param.object.type:Class.Allocator
-
 // ============================================================================
 // Metafunctions
 // ============================================================================
 
-//.Metafunction.Spec.param.T.type:Class.Allocator
+//.Metafunction.Allocator#Spec.param.T.type:Class.Allocator
 
 template <typename TSpec>
 struct Spec<Allocator<TSpec> >
@@ -123,15 +119,16 @@ struct Spec<Allocator<TSpec> >
 // ----------------------------------------------------------------------------
 
 /**
-.Function.allocate:
+.Function.Allocator#allocate
 ..cat:Memory
+..class:Class.Allocator
 ..summary:Allocates memory from heap.
 ..signature:allocate(object, data, count [, usage_tag])
 ..param.object:Allocator object.
-...remarks:$object$ is conceptually the "owner" of the allocated memory.
- Objects of all types can be used as allocators. If no special behavior is implemented,
- default functions allocation/deallocation are applied that uses standard
- $new$ and $delete$ operators.
+...type:Class.Allocator
+..remarks:
+Objects of all types can be used as allocators.
+If no special behavior is implemented, default functions allocation/deallocation are applied that uses standard $new$ and $delete$ operators.
 ..param.count:Number of items that could be stored in the allocated memory.
 ...text:The type of the allocated items is given by the type of $data$.
 ..param.usage_tag:A tag the specifies the purpose for the allocated memory.
@@ -147,8 +144,8 @@ struct Spec<Allocator<TSpec> >
 to construct the objects.
 A $new$ operator which is part of the C++ standard (defined in $<new>$)
  can also be used to construct objects at a given memory address.
-..note:All allocated memory blocks should be deallocated by the corresponding function @Function.deallocate@.
-..see:Function.deallocate
+..note:All allocated memory blocks should be deallocated by the corresponding function @Function.Allocator#deallocate@.
+..see:Function.Allocator#deallocate
 ..see:Function.valueConstruct
 ..see:Function.arrayFill
 ..see:Function.arrayConstruct
@@ -233,15 +230,16 @@ allocate(T &,
 // ----------------------------------------------------------------------------
 
 /**
-.Function.deallocate:
+.Function.Allocator#deallocate:
 ..cat:Memory
+..class:Class.Allocator
 ..summary:Deallocates memory.
 ..signature:deallocate(object, data, count [, usage_tag])
 ..param.object:Allocator object.
-...remarks:$object$ is conceptually the "owner" of the allocated memory.
- Objects of all types can be used as allocators. If no special behavior is implemented,
- default functions allocation/deallocation are applied that uses standard
- $new$ and $delete$ operators.
+...type:Class.Allocator
+...remarks:
+Objects of all types can be used as allocators.
+If no special behavior is implemented, default functions allocation/deallocation are applied that uses standard $new$ and $delete$ operators.
 ..param.data:Pointer to allocated memory that was allocated by $allocate$.
 ..param.count:Number of items that could be stored in the allocated memory.
 ..param.usage_tag:A tag the specifies the purpose for the allocated memory.

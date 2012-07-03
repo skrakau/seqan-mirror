@@ -52,26 +52,26 @@ namespace seqan {
 
 /**
 .Class.ToStdAllocator:
+..cat:Memory
 ..summary:Emulates standard conform allocator.
 ..signature:ToStdAllocator<THost, TValue>
 ..param.THost:Type of the host allocator object.
-...text:This object is used to call @Function.allocate@ and @Function.deallocate@.
+...text:This object is used to call @Function.Allocator#allocate@ and @Function.Allocator#deallocate@.
 ..param.TValue:Type of allocated items.
 ..remarks:The member functions $allocate$ and $deallocate$ of $ToStdAllocator$ call
-the (globale) functions @Function.allocate@ and @Function.deallocate@, respectively. The globale functions
+the (globale) functions @Function.Allocator#allocate@ and @Function.Allocator#deallocate@, respectively. The globale functions
 get an allocator object as their first arguments. This allocator object is not the $ToStdAllocator$ object itself,
 but the host object that was given to the constructor.
-..cat:Basic
 ..remarks:
-..see:Function.allocate
-..see:Function.deallocate
+..see:Function.Allocator#allocate
+..see:Function.Allocator#deallocate
 ..include:seqan/basic.h
 
 .Memfunc.ToStdAllocator:
 ..summary:Constructor
 ..signature:ToStdAllocator(host)
 ..class:Class.ToStdAllocator
-..param.host:The host object that is used as allocator for @Function.allocate@ and @Function.deallocate@.
+..param.host:The host object that is used as allocator for @Function.Allocator#allocate@ and @Function.Allocator#deallocate@.
 */
 
 template <typename THost, typename TValue>

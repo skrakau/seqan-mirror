@@ -6,7 +6,7 @@
 ..Macro:Macro
 ..Spec:Class Specialization
 ..Shortcut:Shortcut
-..Function:Function
+..Function:Used By Function
 ..Memvar:Data Member
 ..Memfunc:Member Function
 ..Memfunc:Class Functions
@@ -42,7 +42,7 @@
 ..tag:Tags
 ..memvar:Data Members
 ..memfunc:Member Functions
-..classfunc:Class Functions
+..interfacefunc:Interface Functions
 ..typedef:Typedefs
 ..function:Functions
 ..remarks:Remarks
@@ -102,7 +102,7 @@
 ..function:Function.*.param.*.type
 ..function:Function.*.returns.*.type
 ..function:Function.*.returns.type
-..classfunc:Function.*.class
+..interfacefunc:Function.*.class
 ..type:Metafunction.*.param.*.type
 ..derived:Class.*.base
 ..derived:Spec.*.base
@@ -133,10 +133,12 @@
 ..typedef:base
 ..memfunc:general
 ..function:conceptfunc
-..function:implements.conceptfunc
 ..function:general
 ..function:baseconcept.conceptusedbyfunc
 ..function:shortcutfor
+..interfacefunc:implements.conceptfunc
+..interfacefunc:base
+..interfacefunc:general
 ..conceptmetafunc:baseconcept
 ..conceptmemvar:baseconcept
 ..conceptmemfunc:baseconcept

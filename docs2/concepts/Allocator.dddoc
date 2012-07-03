@@ -1,8 +1,8 @@
-.Concept.Allocator:
+.DISABLED.Concept.Allocator:
 ..summary:Object that manages memory allocation.
 
-.Function.allocate.concept:Concept.Allocator
-.Function.deallocate.concept:Concept.Allocator
-.Function.Allocator#clear.concept:Concept.Allocator
+.DISABLED.Function.allocate.concept:Concept.Allocator
+.DISABLED.Function.deallocate.concept:Concept.Allocator
+.DISABLED.Function.Allocator#clear.concept:Concept.Allocator
 
 

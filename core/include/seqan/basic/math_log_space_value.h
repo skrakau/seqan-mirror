@@ -54,6 +54,7 @@ namespace seqan {
 
 /**
 .Class.LogProb
+..cat:Math
 ..summary:Value type for computation in log-space.
 ..signature:LogProb<T>
 ..param.T:Floating number type to use as the basic.
@@ -65,7 +66,6 @@ LogProb<double> x = 10;
 x *= 3;
 x += 4;
 int y = x;
-..cat:Basic
 ..include:seqan/basic.h
 */
 

@@ -57,8 +57,8 @@ namespace seqan {
 // ----------------------------------------------------------------------------
 
 /**
-.Class.Holder:
-..cat:Basic
+.Class.Holder
+..cat:Memory
 ..summary:Manages relationship to another object.
 ..signature:Holder<TValue, TSpec>
 ..param.TValue:Type of the managed object.
